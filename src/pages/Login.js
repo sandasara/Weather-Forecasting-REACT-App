@@ -1,33 +1,38 @@
-import React, { createContext, useContext, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useUser } from '../context/UserContext';
+import '../css/Login.css'
 
-const UserContext = createContext();
+function Login() {
+  const { login } = useUser();
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
-export const useUser = () => {
-  return useContext(UserContext);
-};
-
-export const UserProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
-  const navigate = useNavigate();
-
-  const login = (username, password) => {
-    if (username === 'mick' && password === '#loons123') {
-      setUser(username);
-      navigate('/')
-    }
-    else {
-        alert('Please enter correct credentials!')
-    }
-  };
-
-  const logout = () => {
-    setUser(null);
+  const handleLogin = () => {
+    login(username, password);
   };
 
   return (
-    <UserContext.Provider value={{ user, login, logout }}>
-      {children}
-    </UserContext.Provider>
+    <div className='login-container'>
+      <h2>Login</h2>
+      <div className='login-input-container'>
+        <input
+          type="text"
+          placeholder="Username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          className='login-input'
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          className='login-input'
+        />
+      </div>
+        <button className='login-button' onClick={handleLogin}>Login</button>
+    </div>
   );
-};
+}
+
+export default Login;
