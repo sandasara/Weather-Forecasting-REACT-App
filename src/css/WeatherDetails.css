@@ -1,0 +1,61 @@
+.app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.app .search {
+    text-align: center;
+    padding: 1rem;
+}
+  
+.search-inputs{
+    display: flex;
+    gap: 10px;
+}
+
+.search-button {
+    margin-top: 20px;
+}
+
+::placeholder {
+    color: #f8f8f8;
+}
+
+.weather-container {
+    text-align: center;
+}
+
+.forecast-topic {
+    font-size: larger;
+    font-weight: bold;
+}
+
+.more-forecast {
+    margin-top: 20px;
+}
+
+.details-content {
+    display: flex;
+    width: 100%;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+}  
+
+.day-details {
+    min-width: 200px;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ccc;
+}
+
+.toggle-button {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.error-message {
+    color: red;
+}
